@@ -150,7 +150,7 @@ Return
 ;
 ~m & g::
 send, {BackSpace}
-send, txzhu1010@gmail.com
+send, XXXXX@gmail.com
 return
 
 ;
