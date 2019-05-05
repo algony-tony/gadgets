@@ -594,6 +594,7 @@ let NERDTreeMapOpenInTab='\r'
 " F3 Toggle NerdTree
 map <F3> :NERDTreeToggle<CR>
 map <F4> :TagbarToggle<CR>
+let g:tagbar_sort = 0
 
 " #######################################################################
 " setting for others
