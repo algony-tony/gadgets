@@ -595,6 +595,9 @@ let NERDTreeMapOpenInTab='\r'
 map <F3> :NERDTreeToggle<CR>
 map <F4> :TagbarToggle<CR>
 let g:tagbar_sort = 0
+" swap 文件写入磁盘的间隔时间, 默认4000milliseconds, 调小可以降低tagbar跳转延迟
+" 频繁读写可能会降低磁盘的使用寿命
+set updatetime=200
 
 " #######################################################################
 " setting for others
