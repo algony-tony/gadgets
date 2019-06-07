@@ -99,9 +99,16 @@ Plugin 'ervandew/supertab'
 Plugin 'jakedouglas/exuberant-ctags'
 
 " 开闭
-Plugin 'Townk/vim-autoclose'
+" Plugin 'Townk/vim-autoclose'
+Plugin 'jiangmiao/auto-pairs'
 
 " Plugin 'Shougo/neocomplete.vim'
+
+" golden-ratio resizing automatically the windows you are working on to the size specified in the 'Golden Ratio'
+" Plugin 'roman/golden-ratio'
+
+" Light & Dark color schemes for terminal and graphic Vim awesome editor
+Plugin 'NLKNguyen/papercolor-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -167,6 +174,9 @@ colo desertEx "chela_light tolerable papayawhip winter peachpuff elflord
 " let g:wwdc17_term_italics = 1 " Enable italics in the terminal
 " let g:wwdc17_term_trans_bg = 0 " Use a transparent background in the terminal
 
+" set t_Co=256   " This is may or may not needed.
+" set background=dark
+" colorscheme PaperColor
 " show the line number
 set number
 
