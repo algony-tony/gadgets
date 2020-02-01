@@ -444,6 +444,9 @@ endif
 
 set ff=unix
 
+" disable bell, silent mode
+set belloff=all
+
 " setting for statusline
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
