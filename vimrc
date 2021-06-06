@@ -395,9 +395,6 @@ set incsearch
 set tags=tags;
 " set autochdir
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -675,3 +672,8 @@ let g:tagbar_type_elixir = {
     \ ]
 \ }
 
+" 解决windows下 menu 乱码的问题, 要放到vimrc文件最后
+if WINDOWS()
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+endif
