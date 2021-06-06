@@ -45,6 +45,8 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-pandoc/vim-rmarkdown'
 
+Plugin 'mbbill/fencview'
+
 " Syntax highlighting, matching rules and mappings for the original Markdown
 " and extensions.
 Plugin 'godlygeek/tabular'
