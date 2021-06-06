@@ -6,6 +6,20 @@ endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
+" Platform identification {
+    silent function! OSX()
+        return has('macunix')
+    endfunction
+    silent function! LINUX()
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+        return  (has('win16') || has('win32') || has('win64'))
+    endfunction
+" }
+
+
 " ##################################################
 "                   Vundle
 " https://github.com/VundleVim/Vundle.vim
@@ -15,12 +29,14 @@ filetype off                  " required
 " :PluginInstall
 " ##################################################
 " set the runtime path to include Vundle and initialize
-" -- for linux
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-" -- for windows
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$VIM/vimfiles/bundle/')
+if LINUX()
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
+if WINDOWS()
+    set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('$VIM/vimfiles/bundle/')
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -149,10 +165,13 @@ endfunction
 " setting for diff two files
 set diffopt+=vertical
 
+" When you are displaying more than one window, you can set the scrollbind option in each window so they scroll together.
 " set scrollbind
 
-set term=xterm
-set ttytype=xterm
+if LINUX()
+    set term=xterm
+    set ttytype=xterm
+endif
 
 " show the scrollbars other than Menubar and Toolbar
 set guioptions='rL'
@@ -164,7 +183,7 @@ if has('gui_running') && has("win32")
 endif
 
 " Use color scheme
-colo desertEx "chela_light tolerable papayawhip winter peachpuff elflord
+colo desert " desertEx chela_light tolerable papayawhip winter peachpuff elflord
 " colo xemacs
 " colo macvim-light
 " colo mango
@@ -180,14 +199,14 @@ colo desertEx "chela_light tolerable papayawhip winter peachpuff elflord
 " show the line number
 set number
 
-" use relative number
-" set relativenumber
-
 " to disable alt key in windows
 set winaltkeys=no
 
 " choose strong method to encrypt file
 set cryptmethod=blowfish2
+
+" use relative number
+" set relativenumber
 
 " let the search more comfortable, if there exists an upper letter, it's case
 " sensitive, otherwise not
@@ -207,7 +226,7 @@ set gdefault
 set wrap
 
 " show the column N
-set colorcolumn=79,85
+set colorcolumn=
 
 " autowrite all file when focus is lost
 " autocmd FocusLost * :wa
@@ -221,8 +240,8 @@ set suffixes=.out,.synctex,.ion,.pdf,.bak,~,.o,.h,.info,.swp,.aux,.bbl,.blg,.dvi
 "make it so that jk, instead of navigating across actual lines, allows you
 "to scroll up/down visual lines... so if you have a really long wrapped line,
 "you can actually scroll down through it
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " let the search pattern be consistent with Perl/Python
 " nnoremap / /\v
@@ -271,7 +290,7 @@ set nospell
 " cd d:\downloads\
 
 " set the gui font
-set guifont=Courier_New:h13:cANSI
+set guifont=Courier_New:h11:cANSI
 " set guifont=Rod:h16:b:cANSI
 " set guifont=Anonymous:h12:cANSI
 " set guifont=Consolas\ 13
@@ -304,6 +323,8 @@ imap <C-z> <ESC>ua
 
 " set file encoded without bomb
 set nobomb
+
+set list listchars=tab:>-
 
 " Use UTF-8 as default encoding scheme
 set encoding=utf-8
@@ -350,26 +371,28 @@ autocmd! bufwritepost _vimrc source $MYVIMRC
 set backspace=indent,eol,start
 
 " if has("vms")
-"   set nobackup		" do not keep a backup file, use versions instead
+"   set nobackup    " do not keep a backup file, use versions instead
 " else
-"   set backup		" keep a backup file
+"   set backup    " keep a backup file
 " endif
 
 " set backupdir=~/Documents/backup_file,.,/tmp
 
-" set modifiable		" default the setting is on
+" set modifiable    " default the setting is on
 " set writebackup
 " set patchmode=.orig
 
 " display incomplete commands in the lower right corner of the window
 set showcmd
 
-set history=50		" keep 30 lines of command line history
-set ruler		" show the cursor position all the time
+set history=50    " keep 30 lines of command line history
+set ruler    " show the cursor position all the time
 set showmode    "
+" While typing a search command, show where the pattern, as it was typed so far, matches.
+set incsearch
 
 " setting for taglist plugin
-" set tags=tags;
+set tags=tags;
 " set autochdir
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -430,7 +453,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent    " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -439,7 +462,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+      \ | wincmd p | diffthis
 endif
 
 set ff=unix
@@ -490,13 +513,12 @@ iab xxxdate <c-r>=strftime("%Y-%m-%d %a")<cr>
 "   return ""
 " endfunction
 
-" settings to make the operation of tabs of vim be like firefox
-nmap <c-s-tab> :tabprevious<cr>
-nmap <c-tab> :tabnext<cr>
-map <c-s-tab> :tabprevious<cr>
-map <c-tab> :tabnext<cr>
-imap <c-s-tab> <esc>:tabprevious<cr>i
-imap <c-tab> <esc>:tabnext<cr>i
+
+" Use the below highlight group when displaying bad whitespace and TAB is desired.
+highlight BadWhitespace ctermbg=red guibg=red
+" Make trailing whitespace be flagged as bad.
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
+
 
 " #######################################################################
 " settings for latex-suite
@@ -547,12 +569,12 @@ let g:Tex_IgnoreLevel = 8
 " %%% below of file $VIM/vimfile/ftplugin/latex-suite/envmacros.vim
 "
 " %%% elseif a:env == '$$'
-" %%% 	return IMAP_PutTextWithMovement('$$<++>$$')
+" %%%   return IMAP_PutTextWithMovement('$$<++>$$')
 "
 " %%% to the line
 "
 " %%% elseif a:env == '$$'
-" %%%	return IMAP_PutTextWithMovement("$$\<CR><++>\<CR>$$\<CR><++>")
+" %%%  return IMAP_PutTextWithMovement("$$\<CR><++>\<CR>$$\<CR><++>")
 
 " remap the default key <C-J> to <A-space> for jump to next placeholder
 imap <A-space> <Plug>IMAP_JumpForward
@@ -561,13 +583,25 @@ imap <A-space> <Plug>IMAP_JumpForward
 " settings for vimwiki
 " #######################################################################
 let wiki_1 = {}
-let wiki_1.path = 'd:\vimwiki\'
-let wiki_1.path_html = 'd:\vimwiki\html\'
+if WINDOWS()
+    let wiki_1.path = 'd:\ztx\vimwiki\'
+    let wiki_1.path_html = 'd:\ztx\vimwiki\html\'
+endif
+if LINUX()
+    let wiki_1.path = '~\ztx\vimwiki\'
+    let wiki_1.path_html = '~\ztx\vimwiki\html\'
+endif
 
 let wiki_2 = {}
 let wiki_2.ext = '.md'
 let wiki_2.syntax = 'markdown'
-let wiki_2.path = 'd:\markdown\'
+if WINDOWS()
+    let wiki_2.path = 'd:\ztx\markdown\'
+endif
+if LINUX()
+    let wiki_2.path = '~\ztx\markdown\'
+endif
+
 let wiki_2.index = 'index'
 
 let g:vimwiki_list = [wiki_1, wiki_2]
@@ -576,17 +610,10 @@ let g:vimwiki_use_mouse = 1
 let g:vimwiki_camel_case = 0
 
 " #######################################################################
-" setting for python IDE
+" setting for compiling c++ file
 " #######################################################################
 
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-au BufRead,BufNewFile * match BadWhitespace /\s\+$/
+autocmd FileType cpp map <F5> <Esc>:w!<CR>:!compile_cpp.bat %<CR>
 
 " #######################################################################
 " setting for NERDTree
@@ -620,7 +647,7 @@ set updatetime=200
 " let g:dbext_default_profile = 'mysqlMaster'
 
 " for .hql files
-au BufNewFile,BufRead *.hql set filetype=hive expandtab
+au BufNewFile,BufRead *.hql set filetype=sql
 
 " vim-markdown
 let g:vim_markdown_frontmatter=1
