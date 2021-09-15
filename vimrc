@@ -227,6 +227,24 @@ set gdefault
 " wraping is on in default
 set wrap
 
+" switch wrap and show horizontal bar
+function! Wrap()
+    if &wrap
+        set nowrap
+        if !LINUX()
+            set guioptions+=b
+        endif
+    else
+        set wrap
+        if !LINUX()
+            set guioptions-=b
+        endif
+    endif
+endfunction
+
+nnoremap <silent> <f5> :call Wrap()<CR>
+
+
 " show the column N
 set colorcolumn=
 
