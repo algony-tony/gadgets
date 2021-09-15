@@ -114,9 +114,7 @@ Plugin 'majutsushi/tagbar'
 " Supertab is a vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion)
 Plugin 'ervandew/supertab'
 
-" Plugin 'jakedouglas/exuberant-ctags'
-" last plugin no more exists, use below on Ubuntu to install
-" sudo apt-get install exuberant-ctags
+Plugin 'jakedouglas/exuberant-ctags'
 
 " 开闭
 " Plugin 'Townk/vim-autoclose'
