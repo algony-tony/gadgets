@@ -129,6 +129,10 @@ Plugin 'jiangmiao/auto-pairs'
 " Light & Dark color schemes for terminal and graphic Vim awesome editor
 Plugin 'NLKNguyen/papercolor-theme'
 
+" Provides syntax highlighting for generic log files in VIM
+" set filetype=log
+Plugin 'mtdl9/vim-log-highlighting'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
