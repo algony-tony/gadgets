@@ -29,13 +29,12 @@ filetype off                  " required
 " :PluginInstall
 " ##################################################
 " set the runtime path to include Vundle and initialize
-if LINUX()
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-endif
 if WINDOWS()
     set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
     call vundle#begin('$VIM/vimfiles/bundle/')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 endif
 
 " let Vundle manage Vundle, required
@@ -608,8 +607,7 @@ let wiki_1 = {}
 if WINDOWS()
     let wiki_1.path = 'd:\ztx\vimwiki\'
     let wiki_1.path_html = 'd:\ztx\vimwiki\html\'
-endif
-if LINUX()
+else
     let wiki_1.path = '~\ztx\vimwiki\'
     let wiki_1.path_html = '~\ztx\vimwiki\html\'
 endif
@@ -619,8 +617,7 @@ let wiki_2.ext = '.md'
 let wiki_2.syntax = 'markdown'
 if WINDOWS()
     let wiki_2.path = 'd:\ztx\markdown\'
-endif
-if LINUX()
+else
     let wiki_2.path = '~\ztx\markdown\'
 endif
 
