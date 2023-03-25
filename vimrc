@@ -27,6 +27,7 @@ filetype off                  " required
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " 2. Install/update plugins
 " :PluginInstall
+" :PluginUpdate
 " ##################################################
 " set the runtime path to include Vundle and initialize
 if WINDOWS()
