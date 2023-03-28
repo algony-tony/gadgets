@@ -1,0 +1,33 @@
+Thanks to all translators of this program:
+
+Bulgarian: Romeo Kostov
+Chinese    PRC: SunYJ
+           Traditional: victorybunny
+Czech:     KuBA
+Danish:    AlleyKat
+           C. Kristoffersen
+           Peter Madsen
+Dutch:     Pierre Melser
+French:    Claude Charries
+German:    deus-ex & TychoBarfy
+Greek:     Panos
+Hebrew:    Elior Kushnir
+Hungarian: DirektX
+Italian:   TJL73
+Japanese:  Masayuki Mogi
+Korean:    Feeldic
+           Xcaliber
+Polish:    Mateusz Biliñski
+           Szymon Ogrodnik
+           Henryk Musioi
+           jaszczury
+Romanian:  Cautator Kan
+           Eugen Lupu
+Slovak:    Sklado
+Spanish:   Luis Mejia
+           Oscar Salinas Mora
+Swedish:   Leif Larsson
+Ukrainian: Maximus & Yuri Petrashko
+
+
+Please send new/updated translations to the e-mail given in Readme.txt.
