@@ -4,3 +4,4 @@ ChmDir 支持 CHM 文件格式，对 CHM 中的文件进行提取、搜索、压
 GifWcx 使用 ctrl+pagedown 打开 gif 文件
 iso 用于浏览、提取各种光盘映像中的文件
 wipe 文件粉碎机，用于彻底删除文件，一旦删除即不可恢复
+GraphicConverter 图片格式转换

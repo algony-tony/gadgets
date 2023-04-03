@@ -4,3 +4,4 @@ Registry 注册表插件，将注册表视为文件夹，像操作文件夹一�
 sftpplug Allows to access remote servers via secure FTP (FTP via SSH)
 StartupGuard 以文件列表的方式列出 Windows 启动自启动的文件
 Uninstall 列出已安装文件列表，可以查看配置和卸载
+HTTPBrowser 访问网页，把页面文件以文件列表方式展现
