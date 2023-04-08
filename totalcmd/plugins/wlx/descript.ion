@@ -6,3 +6,4 @@ CudaLister 带有语法高亮源的文本文件查看器
 sumatrapdf sumatrapdf 查看器
 wlx_anytag 在列表器中显示音频文件的元数据
 wlx_pdfview 可查看 pdf 文件，postscript 文件，eps 文件
+wlx_csv_0_6_1 查看 csv 文件
