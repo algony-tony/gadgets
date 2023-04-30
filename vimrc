@@ -181,7 +181,7 @@ if LINUX()
 endif
 
 " show the scrollbars other than Menubar and Toolbar
-set guioptions='rL'
+set guioptions="rL"
 " set guioptions=''
 
 " Maximize the window of Vim
