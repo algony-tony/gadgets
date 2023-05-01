@@ -609,8 +609,8 @@ if WINDOWS()
     let wiki_1.path = 'd:\ztx\vimwiki\'
     let wiki_1.path_html = 'd:\ztx\vimwiki\html\'
 else
-    let wiki_1.path = '~\ztx\vimwiki\'
-    let wiki_1.path_html = '~\ztx\vimwiki\html\'
+    let wiki_1.path = '~/ztx/vimwiki/'
+    let wiki_1.path_html = '~/ztx/vimwiki/html/'
 endif
 
 let wiki_2 = {}
@@ -619,7 +619,7 @@ let wiki_2.syntax = 'markdown'
 if WINDOWS()
     let wiki_2.path = 'd:\ztx\markdown\'
 else
-    let wiki_2.path = '~\ztx\markdown\'
+    let wiki_2.path = '~/ztx/markdown/'
 endif
 
 let wiki_2.index = 'index'
